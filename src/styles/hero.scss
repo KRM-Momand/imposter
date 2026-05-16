@@ -1,0 +1,36 @@
+@use 'variables' as *; 
+@use 'mixin' as *; 
+
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: $text-color;
+    height: 100%;
+    width: 100%;
+    color: $secondary-color
+}
+
+.hero-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    button {
+        left: 0px;
+        position: absolute;
+        @include button-styles; 
+
+    }
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    padding-top: 128px;
+
+    button {
+        @include button-styles; 
+    }
+}

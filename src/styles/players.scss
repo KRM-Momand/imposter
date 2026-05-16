@@ -1,0 +1,66 @@
+@use 'variables' as *; 
+@use 'mixin' as *; 
+
+.player-container {
+    height: 90vh;
+    width: 90%;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    padding: 32px;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 4px $secondary-color;
+    .track-wrapper {
+        position: relative; 
+        flex: 6;
+        overflow: hidden;
+    }
+
+    .player-track {
+        display: flex;
+        height: 100%;
+
+        .player-card {
+            min-width: 100%;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .player-name {
+                font-size: 3rem;
+                color: $text-color;
+            }
+            .card-content {
+                width: 100%;
+                height: 100%;
+                font-size: 3rem;
+                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+                color: $text-color;
+
+            }
+        }
+        
+    }
+    .card-cap {
+        width: 100%;
+        height: 80%;
+
+        background-color: $text-color;
+        z-index: 10;
+        position: absolute;
+
+        bottom: 0px;
+    }
+    .player-btn {
+        flex: 1;
+    }
+}

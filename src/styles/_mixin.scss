@@ -1,0 +1,19 @@
+@use 'variables' as *; 
+
+@mixin button-styles (
+    $background-color: $primary-color, 
+    $color: $text-color
+
+){
+        padding: 12px; 
+        margin:6px;
+        border-radius: 12px;
+        background-color: $background-color;
+        margin: 6px 32px; 
+        color: $color; 
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+}

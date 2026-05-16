@@ -1,0 +1,38 @@
+@use 'mixin' as *;
+@use 'variables' as *;  
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-variant: small-caps;
+        color: $primary-color;
+        padding: 32px; 
+    }
+    .note {
+        color: $primary-color;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+
+    .imposter-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 100%;
+
+    button {
+        @include button-styles; 
+
+        &:disabled {
+            opacity: 0.5;
+            transform: none;
+            filter: grayscale(0.2)
+        }
+    }
+    }
+
+}

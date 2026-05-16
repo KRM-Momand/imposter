@@ -1,0 +1,53 @@
+@use 'variables' as *; 
+@use 'mixin' as *; 
+
+.add-player {
+    background-color: $text-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 32px;
+    height: 100%; 
+    width: 100%;
+
+    h1 {
+        margin-top: 32px;
+        color: $primary-color;
+        font-variant: small-caps;
+    }
+
+    input {
+        width: 100%;
+        border-radius: 12px; 
+        padding: 12px; 
+    }
+
+    button {
+        @include button-styles; 
+        width: 100%; 
+    }
+
+    .players-list {
+        padding-top: 12px;
+        
+    }
+
+    ul {
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul li {
+        padding: 0px;
+        margin: 0px;
+        list-style: none;
+    }
+
+
+
+
+}
