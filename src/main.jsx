@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-//import LifeConceptProvider from './contexts/LifeConceptProvider.jsx'
-import { LifeConceptContext } from './contexts/LifeConceptContext.jsx'
+import LifeConceptProvider from './contexts/LifeConceptProvider.jsx'
+
 import PlayerProvider from './contexts/playerProvider.jsx'
 import App from './App.jsx'
 
