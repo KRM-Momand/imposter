@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState , useRef} from 'react'
+import React, { useContext, useMemo, useState , useRef, useEffect} from 'react'
 import '../styles/players.scss'
 
 import { PlayerContext } from '../contexts/playersContext'
@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Players() {
     const {lifeConcepts} = useContext(LifeConceptContext)
-    const {state } = useContext(PlayerContext)
+    const {state, dispatch } = useContext(PlayerContext)
     const [currentIndex, setCurrentIndex] = useState(0);
     const [dragY , setDragY] = useState(0); 
     const [isDragging, setIsDragging] = useState(false)
@@ -44,7 +44,24 @@ function Players() {
     const selectedCategory = state.category;
     const categoryData = lifeConcepts.find(c => c.category === selectedCategory);
 
+    const navigate = useNavigate();
 
+
+    useEffect(() => {
+        if(state.imposter.length <= 0 ){
+            const addImposter = Math.floor(Math.random() * playerQuantity)
+            dispatch({
+                type: 'addImposter', 
+                payload: addImposter
+            })
+        }
+    },[state.imposter, playerQuantity, dispatch]);
+
+    const selectCategory = useMemo(() => {
+        if(!categoryData?.items?.length) return ''; 
+        const randomIndex = Math.floor(Math.random() * categoryData.items.length)
+        return categoryData.items[randomIndex]
+    }, [state.category])
 
 
   return (
@@ -57,7 +74,7 @@ function Players() {
                     <div key={index} className={`player-card ${index === currentIndex ?' is-active' : ''}`}>
                         <h1 className='player-name'>{ player }</h1>
                         <div className='card-content'>
-                            {state.imposter.includes(index) ? 'Imposter' : categoryData?.items?.[index]}
+                            {state.imposter.includes(index) ? 'Imposter' : selectCategory}
                         </div>
                     </div>
                 ))}
@@ -69,11 +86,14 @@ function Players() {
         </div>
 
         <button className='player-btn' disabled={!isReady} onClick={() => {
-            setCurrentIndex(prev => (
-                prev + 1 < playerQuantity ? prev + 1 : 0
-            ))
+            
+            if(currentIndex + 1 < playerQuantity){
+                setCurrentIndex(prev => prev + 1);
+                setIsReady(false)
 
-            setIsReady(false)
+            } else {
+                navigate('/timer')
+            }
 
         }}> {isReady ? 'Next' : 'Drag To Preview'} </button>
       

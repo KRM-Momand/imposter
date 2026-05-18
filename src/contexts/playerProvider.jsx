@@ -6,7 +6,8 @@ function PlayerProvider ({children}) {
     const initialStatus = {
       players: [], 
       category: 'Sports', 
-      imposter: [2 ]}; 
+      imposter: [], 
+      timer: 1 }; 
     
     
     const addPlayerReducer = (state = initialStatus, action) => {

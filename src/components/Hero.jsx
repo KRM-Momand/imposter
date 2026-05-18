@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Outlet, useNavigate } from 'react-router-dom'
+import { PlayerContext } from '../contexts/playersContext';
 
 import '../styles/hero.scss'; 
 
 
 
 function Hero() {
+  const {state} = useContext(PlayerContext)
   const navigate = useNavigate(); 
 
 
   const handlePlay = () => {
-    navigate('/Play'); 
+    if(state.players.length <= 2) {
+      alert('Please add at least 3 players'); 
+      navigate('/'); 
+    } else {
+      navigate('/play'); 
+    }
+
+    
   }
   const handleAddPlayer = () => {
     navigate('/addPlayers'); 
@@ -21,6 +30,9 @@ function Hero() {
   const handleSelectCategory = () => {
     navigate('/selectCategory'); 
   }
+  const handleTimer = () => {
+    navigate('/timer'); 
+  }
 
 
   return (
@@ -30,6 +42,7 @@ function Hero() {
             <button onClick={handleAddPlayer}> Add Player  </button>
             <button onClick={handleAddImposter}> Add Imposter  </button>
             <button onClick={handleSelectCategory}> Select Category  </button>
+            <button onClick={handleTimer}> Timer  </button>
           </div>
         </section>
   )
