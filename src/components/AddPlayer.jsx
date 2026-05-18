@@ -15,6 +15,13 @@ function AddPlayer() {
 
         setName('')
     }
+
+    const handleRemovePlayer = (e) => {
+        dispatch({
+            type: 'removePlayer',
+            payload: e
+        })
+    }
   return (
     <section className='add-player'>
         <h1> Add Player</h1>
@@ -25,10 +32,12 @@ function AddPlayer() {
 
             {state.players.map((player, index) => (
                 <ul key={index}>
-                    <li>{player}</li>
+                    <li onClick={() => handleRemovePlayer(index)}>{player}</li>
                 </ul>
             ))}
         </div>
+
+        <small> To remove Players simple click on his/her name</small>
     </section>
   )
 }

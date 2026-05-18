@@ -11,6 +11,7 @@ import Imposter from './components/Imposter'
 import Players from './components/Players'
 import Layout from './components/Layout'
 import Timer from './components/Timer'
+import SetTimer from './components/SetTimer'
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
             <Route path='addImposter' element={<Imposter />} />
             <Route path='selectCategory' element={<Categories />} />
             <Route path='timer' element={<Timer />} />
+            <Route path='setTimer' element={<SetTimer />} />
+
           </Route>
 
 

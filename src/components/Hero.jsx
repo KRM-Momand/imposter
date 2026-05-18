@@ -31,7 +31,7 @@ function Hero() {
     navigate('/selectCategory'); 
   }
   const handleTimer = () => {
-    navigate('/timer'); 
+    navigate('/setTimer'); 
   }
 
 
@@ -42,7 +42,7 @@ function Hero() {
             <button onClick={handleAddPlayer}> Add Player  </button>
             <button onClick={handleAddImposter}> Add Imposter  </button>
             <button onClick={handleSelectCategory}> Select Category  </button>
-            <button onClick={handleTimer}> Timer  </button>
+            <button onClick={handleTimer}> SetTimer  </button>
           </div>
         </section>
   )

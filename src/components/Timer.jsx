@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { PlayerContext } from '../contexts/playersContext';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Timer() {
   const {state } = useContext(PlayerContext);
   const [seconds, setSeconds] = useState(state.timer * 60); 
   const [toShow, setToShow] = useState(true); 
+  const navigate = useNavigate(); 
 
   useEffect(() => {
 
@@ -25,6 +27,10 @@ function Timer() {
   const minutes = Math.floor(seconds / 60); 
   const remainingSeconds = seconds % 60; 
 
+  const handleRestart = () => {
+    navigate('/'); 
+  }
+
   return (
     <section>
 
@@ -40,6 +46,8 @@ function Timer() {
                 <li>{state.players[imposter]}</li>
               </ul>
             ))}
+
+            <button onClick={handleRestart}> Restart Game </button>
           </>
         )}
 
