@@ -14,11 +14,14 @@ function SetTimer() {
     }
 
   return (
-    <section>
+    <section className='setTimer'>
         <h1>Set Timer</h1>
-        <span> 1 min</span>
-        <input type='range' min='1' max='60' value={state.timer} onChange={handleTime} />
-        <span> 60 min</span>
+        <div>
+
+            <span> 1 min</span>
+                <input type='range' min='1' max='60' value={state.timer} onChange={handleTime} />
+            <span> 60 min</span>
+        </div>
         <h3>{state.timer} minute{state.timer > 1 ? 's' : ''}</h3>
       
     </section>

@@ -30,6 +30,8 @@
 
     .players-list {
         padding-top: 12px;
+        font-weight: bold;
+        color: $primary-color;
         
     }
 
@@ -48,6 +50,10 @@
     }
 
 
-
+    small {
+        font-weight: bold;
+        color: $primary-color; 
+        padding-top: 10%;
+    }
 
 }

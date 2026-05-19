@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { PlayerContext } from '../contexts/playersContext';
 import { Navigate, useNavigate } from 'react-router-dom';
+import '../styles/timer.scss'; 
 
 function Timer() {
   const {state } = useContext(PlayerContext);
@@ -32,7 +33,7 @@ function Timer() {
   }
 
   return (
-    <section>
+    <section className='timer'>
 
         {toShow ? (
 

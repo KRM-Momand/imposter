@@ -1,0 +1,46 @@
+@use 'variables' as *;
+@use 'mixin' as *; 
+.setTimer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $primary-color; 
+
+    div {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+            width: 70%;
+        }
+        span {
+            font-weight: bold;
+        }
+    }
+    h3 {
+        padding-top: 5%;
+    }
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    ul li {
+        color: $primary-color;
+        font-weight: bold;
+        list-style-type: none;
+    }
+
+    button {
+        width: 100%;
+        font-weight: bold; 
+        @include button-styles; 
+    }
+}
