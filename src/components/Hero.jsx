@@ -7,8 +7,10 @@ import '../styles/hero.scss';
 
 
 function Hero() {
-  const {state} = useContext(PlayerContext)
-  const navigate = useNavigate(); 
+  const {state, dispatch} = useContext(PlayerContext)
+  const [imposter, setImposter] = []; 
+  const navigate = useNavigate();
+  const totalPlayers = state.players.length;  
 
 
   const handlePlay = () => {
@@ -18,6 +20,23 @@ function Hero() {
     } else {
       navigate('/play'); 
     }
+    const totalImposters = state?.imposter.length; 
+    for(let i = 0; i > totalImposters ; i++){
+
+
+      setImposter(prev => (
+        prev = Math.floor(Math.random() * totalPlayers), 
+        [...prev, prev]
+      ))
+
+    }
+
+    dispatch({
+      type: 'addImposter', 
+      payload: imposter
+    })
+    alert(totalImposters); 
+    console.log(totalImposters); 
 
     
   }

@@ -74,7 +74,7 @@ function Players() {
                     <div key={index} className={`player-card ${index === currentIndex ?' is-active' : ''}`}>
                         <h1 className='player-name'>{ player }</h1>
                         <div className='card-content'>
-                            {state.imposter.includes(index) ? 'Imposter' : selectCategory}
+                            {state?.imposter?.includes(index) ? 'Imposter' : selectCategory}
                         </div>
                     </div>
                 ))}

@@ -4,8 +4,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import '../styles/timer.scss'; 
 
 function Timer() {
-  const {state } = useContext(PlayerContext);
-  const [seconds, setSeconds] = useState(state.timer * 60); 
+  const {state , dispatch} = useContext(PlayerContext);
+  const [seconds, setSeconds] = useState(state.timer * 3); 
   const [toShow, setToShow] = useState(true); 
   const navigate = useNavigate(); 
 
@@ -29,6 +29,24 @@ function Timer() {
   const remainingSeconds = seconds % 60; 
 
   const handleRestart = () => {
+
+    const totalImposters = state?.imposter.length; 
+    for(let i = 0; i > totalImposters ; i++){
+
+
+      setImposter(prev => (
+        prev = Math.floor(Math.random() * totalPlayers), 
+        [...prev, prev]
+      ))
+
+    }
+
+    dispatch({
+      type: 'addImposter', 
+      payload: imposter
+    })
+
+    
     navigate('/'); 
   }
 

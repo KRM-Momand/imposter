@@ -6,7 +6,7 @@ function PlayerProvider ({children}) {
     const initialStatus = {
       players: [], 
       category: 'Sports', 
-      imposter: [], 
+      imposter: [1], 
       timer: 0.1 }; 
 
     const savedData = () => {
@@ -25,7 +25,7 @@ function PlayerProvider ({children}) {
             case 'selectCategory':
               return {...state, category: action.payload }
             case 'addImposter': 
-              return {...state, imposter: [...state.imposter, action.payload]}
+              return {...state, imposter: action.payload}
             case 'removePlayer': 
               return {
                 ...state, players: state.players.filter((_, i) => i !== action.payload)
