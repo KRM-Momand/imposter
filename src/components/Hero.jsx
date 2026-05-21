@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {Outlet, useNavigate } from 'react-router-dom'
 import { PlayerContext } from '../contexts/playersContext';
 
@@ -8,7 +8,7 @@ import '../styles/hero.scss';
 
 function Hero() {
   const {state, dispatch} = useContext(PlayerContext)
-  const [imposter, setImposter] = []; 
+  const [imposter, setImposter] = useState([]); 
   const navigate = useNavigate();
   const totalPlayers = state.players.length;  
 
@@ -21,7 +21,7 @@ function Hero() {
       navigate('/play'); 
     }
     const totalImposters = state?.imposter.length; 
-    for(let i = 0; i > totalImposters ; i++){
+    for(let i = 0; i < totalImposters ; i++){
 
 
       setImposter(prev => (

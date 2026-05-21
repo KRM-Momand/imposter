@@ -6,7 +6,7 @@ function PlayerProvider ({children}) {
     const initialStatus = {
       players: [], 
       category: 'Sports', 
-      imposter: [1], 
+      imposter: [], 
       timer: 0.1 }; 
 
     const savedData = () => {

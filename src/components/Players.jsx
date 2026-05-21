@@ -48,11 +48,11 @@ function Players() {
 
 
     useEffect(() => {
-        if(state.imposter.length <= 0 ){
+        if(!state.imposter || state.imposter?.length === 0 ){
             const addImposter = Math.floor(Math.random() * playerQuantity)
             dispatch({
                 type: 'addImposter', 
-                payload: addImposter
+                payload: [addImposter]
             })
         }
     },[state.imposter, playerQuantity, dispatch]);
@@ -70,11 +70,11 @@ function Players() {
 
             <div className='player-track' style={{transform: `translateX(-${currentIndex * 100}%)`}}>
 
-                {state.players.map((player , index) => (
+                {state.players?.map((player , index) => (
                     <div key={index} className={`player-card ${index === currentIndex ?' is-active' : ''}`}>
                         <h1 className='player-name'>{ player }</h1>
                         <div className='card-content'>
-                            {state?.imposter?.includes(index) ? 'Imposter' : selectCategory}
+                            {state?.imposter.includes(index) ? 'Imposter' : selectCategory}
                         </div>
                     </div>
                 ))}

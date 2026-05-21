@@ -5,6 +5,7 @@ import '../styles/timer.scss';
 
 function Timer() {
   const {state , dispatch} = useContext(PlayerContext);
+  const totalPlayers = state.players.length; 
   const [seconds, setSeconds] = useState(state.timer * 3); 
   const [toShow, setToShow] = useState(true); 
   const navigate = useNavigate(); 
@@ -30,23 +31,22 @@ function Timer() {
 
   const handleRestart = () => {
 
-    const totalImposters = state?.imposter.length; 
-    for(let i = 0; i > totalImposters ; i++){
+    const totalImposters = state.imposter.length; 
 
+    const newImposter = []; 
+    for(let i = 0; i < totalImposters ; i++){
 
-      setImposter(prev => (
-        prev = Math.floor(Math.random() * totalPlayers), 
-        [...prev, prev]
-      ))
+      newImposter.push(Math.floor(Math.random() * totalPlayers))
+
 
     }
 
     dispatch({
       type: 'addImposter', 
-      payload: imposter
+      payload: newImposter
     })
 
-    
+
     navigate('/'); 
   }
 
@@ -60,9 +60,9 @@ function Timer() {
           <>
 
             <h1>Imposter(s) of the Game </h1>
-            {state.imposter.map((imposter, index) => (
+            {state.imposter.map((imposterIndex, index) => (
               <ul key={index}>
-                <li>{state.players[imposter]}</li>
+                <li>{state.players[imposterIndex]}</li>
               </ul>
             ))}
 
